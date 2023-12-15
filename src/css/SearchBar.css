@@ -1,3 +1,7 @@
+.search-container {
+  background-color: olive;
+}
+
 .search-options {
   list-style: none;
   display: flex;

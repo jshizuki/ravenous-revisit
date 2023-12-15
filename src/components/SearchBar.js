@@ -10,10 +10,10 @@ const searchOptions = {
 
 function SearchBar() {
   return (
-    <div>
+    <div className="search-container">
       <ul className="search-options">
         {Object.entries(searchOptions).map((option) => {
-          return <li>{option[0]}</li>;
+          return <li key={option[0]}>{option[0]}</li>;
         })}
       </ul>
       <form>
