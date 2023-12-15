@@ -12,3 +12,8 @@
   background-color: aqua;
   margin: 20px;
 }
+
+.search-options li.active {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
