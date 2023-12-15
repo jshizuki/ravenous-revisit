@@ -1,4 +1,12 @@
-.App {
+.app-container {
+  background-color: silver;
+  margin: auto;
+  text-align: center;
+}
+
+/* Default css styles */
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +43,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

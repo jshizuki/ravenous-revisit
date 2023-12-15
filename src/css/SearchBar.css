@@ -1,0 +1,10 @@
+.search-options {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.search-options li {
+  background-color: aqua;
+  margin: 20px;
+}
