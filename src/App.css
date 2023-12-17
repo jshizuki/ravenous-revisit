@@ -4,6 +4,23 @@
   text-align: center;
 }
 
+.app-banner-image-container {
+  background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg");
+  background-size: cover;
+  height: 400px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-ravenous-title {
+  background-color: #999999;
+  color: white;
+  padding: 15px;
+  margin: 0px;
+}
+
 /* Default css styles */
 
 /* .App {
