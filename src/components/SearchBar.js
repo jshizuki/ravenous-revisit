@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../css/SearchBar.css";
 // Material UI
 import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const options = {
   "Best Match": "best_match",
@@ -13,26 +13,17 @@ const options = {
 
 function SearchBar() {
   // Set state variables and state
-  const [searchOption, setSearchOption] = useState("Best Match");
+  const [searchOption, setSearchOption] = useState("best_match");
   const [searchGenre, setSearchGenre] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
 
-  const handleOptionChange = (event) => {
-    const selectedOption = event.target.innerText;
-    setSearchOption(options[selectedOption]);
-    // Set active style
-    const ulContainer = event.target.parentNode;
-    const optionsList = ulContainer.querySelectorAll("li");
-    optionsList.forEach((option) => {
-      if (option.innerText === selectedOption) {
-        option.classList.add("active");
-      } else {
-        option.classList.remove("active");
-      }
-    });
-  };
-
   // Event handlers to capture user's selected sort option, genre and location
+
+  const handleOptionChange = ({ target }) => {
+    // Capture the innertext of the <li> element
+    const option = target.innerText;
+    setSearchOption(options[option]);
+  };
 
   const handleGenreChange = ({ target }) => {
     const selectedGenre = target.value;
@@ -47,22 +38,25 @@ function SearchBar() {
   // Event handler to submit selected sort option, genre and location
 
   const handleSubmit = (event) => {
+    // Prevent refreshing page by default after submitting
     event.preventDefault();
-    console.log(`Searching Ravenous with ${searchGenre} and ${searchLocation}`);
+    console.log(
+      `Searching Ravenous with ${searchOption}, ${searchGenre} and ${searchLocation}`
+    );
   };
 
   return (
     <div className="search-container">
       <ul className="search-options">
-        {Object.entries(options).map((option) => {
+        {Object.keys(options).map((option) => {
           return (
-            <li onClick={handleOptionChange} key={option[0]}>
-              {option[0]}
+            <li onClick={handleOptionChange} key={options[option]}>
+              {option}
             </li>
           );
         })}
       </ul>
-      <hr className="search-custom-hr"/>
+      <hr className="search-custom-hr" />
       <form onSubmit={handleSubmit}>
         <TextField
           onChange={handleGenreChange}
@@ -87,7 +81,14 @@ function SearchBar() {
           className="search-custom-textfield"
         />
         <br />
-        <Button type="submit" variant="contained" className="search-button" sx={{ width: 120, m: 1 }}>Let's go</Button>
+        <Button
+          type="submit"
+          variant="contained"
+          className="search-button"
+          sx={{ width: 120, m: 1 }}
+        >
+          Let's go
+        </Button>
       </form>
     </div>
   );
