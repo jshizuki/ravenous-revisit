@@ -21,8 +21,19 @@ function SearchBar() {
 
   const handleOptionChange = ({ target }) => {
     // Capture the innertext of the <li> element
-    const option = target.innerText;
-    setSearchOption(options[option]);
+    const selectedOption = target.innerText;
+    setSearchOption(options[selectedOption]);
+    // Toggle class of <li> to visually indicate which option has been selected
+    const ul = target.parentNode;
+    const allLists = ul.querySelectorAll("li")
+    // Returns a nodelist
+    allLists.forEach(list => {
+      if (selectedOption === list.innerText ) {
+        list.classList.add("active");
+      } else {
+        list.classList.remove("active");
+      }
+    })
   };
 
   const handleGenreChange = ({ target }) => {
