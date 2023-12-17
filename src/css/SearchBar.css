@@ -1,19 +1,36 @@
 .search-container {
-  background-color: olive;
+  /* background-color: olive; */
 }
 
 .search-options {
   list-style: none;
   display: flex;
   justify-content: center;
+  padding: 0px;
 }
 
 .search-options li {
   background-color: aqua;
-  margin: 20px;
+  margin: 0px 10px 0px 10px;
 }
 
 .search-options li.active {
   background-color: #f9f9f9;
   font-weight: bold;
+}
+
+.search-custom-hr {
+  width: 50%;
+  opacity: 0.6;
+  height: 2px;
+  background-color: white;
+  border: 0;
+}
+
+.search-custom-textfield {
+  background-color: white;
+}
+
+.search-button {
+  background-color: #caa34e !important;
 }

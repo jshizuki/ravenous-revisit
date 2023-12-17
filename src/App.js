@@ -6,10 +6,6 @@ import BusinessList from "./components/BusinessList";
 // CSS styling
 import "./App.css";
 
-// Banner Image url
-const bannerImage =
-  "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg";
-
 // Seeding fake restaurant data
 const business = {
   imageSrc: "https://content.codecademy.com/programs/react/ravenous/pizza.jpg",

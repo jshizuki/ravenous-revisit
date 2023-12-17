@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 // CSS styling
 import "../css/SearchBar.css";
+// Material UI
+import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
 
 const options = {
   "Best Match": "best_match",
@@ -9,7 +12,8 @@ const options = {
 };
 
 function SearchBar() {
-  const [searchOption, setSearchOption] = useState("best_match");
+  // Set state variables and state
+  const [searchOption, setSearchOption] = useState("Best Match");
   const [searchGenre, setSearchGenre] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
 
@@ -28,19 +32,23 @@ function SearchBar() {
     });
   };
 
-  const handleGenreChange = (event) => {
-    setSearchGenre(event.target.value);
+  // Event handlers to capture user's selected sort option, genre and location
+
+  const handleGenreChange = ({ target }) => {
+    const selectedGenre = target.value;
+    setSearchGenre(selectedGenre);
   };
 
-  const handleLocationChange = (event) => {
-    setSearchLocation(event.target.value);
+  const handleLocationChange = ({ target }) => {
+    const selectedLocation = target.value;
+    setSearchLocation(selectedLocation);
   };
+
+  // Event handler to submit selected sort option, genre and location
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(
-      `Searching Ravenous with ${searchGenre}, ${searchLocation}, ${searchOption}`
-    );
+    console.log(`Searching Ravenous with ${searchGenre} and ${searchLocation}`);
   };
 
   return (
@@ -54,21 +62,32 @@ function SearchBar() {
           );
         })}
       </ul>
+      <hr className="search-custom-hr"/>
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
           onChange={handleGenreChange}
           type="text"
-          placeholder="Search Businesses"
+          placeholder="Type in a cuisine - example: Italian"
           value={searchGenre}
+          id="outlined-basic"
+          variant="outlined"
+          size="small"
+          sx={{ width: 400, m: 1 }}
+          className="search-custom-textfield"
         />
-        <input
+        <TextField
           onChange={handleLocationChange}
           type="text"
           placeholder="Where?"
           value={searchLocation}
+          id="outlined-basic"
+          variant="outlined"
+          size="small"
+          sx={{ width: 400, m: 1 }}
+          className="search-custom-textfield"
         />
         <br />
-        <button type="submit">Let's go</button>
+        <Button type="submit" variant="contained" className="search-button" sx={{ width: 120, m: 1 }}>Let's go</Button>
       </form>
     </div>
   );
