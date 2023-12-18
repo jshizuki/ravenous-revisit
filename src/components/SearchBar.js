@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getBusinesses } from "../utils/yelpApi";
 // CSS styling
 import "../css/SearchBar.css";
 // Material UI
@@ -11,7 +12,7 @@ const options = {
   "Most Reviewed": "review_count",
 };
 
-function SearchBar() {
+function SearchBar({handleSubmit}) {
   // Set state variables and state
   const [searchOption, setSearchOption] = useState("best_match");
   const [searchGenre, setSearchGenre] = useState("");
@@ -46,15 +47,14 @@ function SearchBar() {
     setSearchLocation(selectedLocation);
   };
 
-  // Event handler to submit selected sort option, genre and location
-
-  const handleSubmit = (event) => {
-    // Prevent refreshing page by default after submitting
-    event.preventDefault();
-    console.log(
-      `Searching Ravenous with ${searchOption}, ${searchGenre} and ${searchLocation}`
-    );
-  };
+  // const handleSubmit = (event) => {
+  //   // Prevent refreshing page by default after submitting
+  //   event.preventDefault();
+  //   console.log(
+  //     `Searching Ravenous with ${searchOption}, ${searchGenre} and ${searchLocation}`
+  //   );
+  //   getBusinesses(searchGenre, searchLocation, searchOption);
+  // };
 
   return (
     <div className="search-container">
@@ -68,7 +68,7 @@ function SearchBar() {
         })}
       </ul>
       <hr className="search-custom-hr" />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(event) => handleSubmit(event, searchGenre, searchLocation)}>
         <TextField
           onChange={handleGenreChange}
           type="text"
