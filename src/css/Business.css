@@ -1,28 +1,45 @@
 .business-card-container {
   background-color: white;
   width: 300px;
-  margin: 10px;
+  margin: 25px;
+  border-radius: 10px;
+  /* border: 1px solid #999999; */
+  box-shadow: 1px 1px 8px 2px #E8E8E8;
 }
 
 .business-card-image {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+  opacity: 0.8;
 }
 
 .business-card-info {
   display: flex;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
+  /* top right bottom left */
+  padding: 5px 0px 5px 0px;
+  border-radius: 0px 0px 10px 10px;
 }
 
+.business-card-info p {
+  /* top right bottom left */
+  margin: 5px 0px 5px 0px;
+}
+
+
 .business-card-container h2 {
+  /* background-color: blueviolet; */
   text-align: left;
   margin: 0;
-  margin-left: 10px;
+  padding-top: 5px;
+  padding-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .business-card-info-left {
-  background-color: blue;
+  /* background-color: blue; */
   text-align: left;
   flex-grow: 1;
   margin-left: 10px;
@@ -30,6 +47,6 @@
 
 .business-card-info-right {
   text-align: right;
-  background-color: brown;
+  /* background-color: brown; */
   margin-right: 10px;
 }

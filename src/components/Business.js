@@ -22,7 +22,7 @@ function Business({ business }) {
         <div className="business-card-info-right">
           <p>{business["categories"][0].title}</p>
           <p>{business.rating}</p>
-          <p>{business.review_count}</p>
+          <p>{business.review_count} reviews</p>
         </div>
       </div>
     </div>
