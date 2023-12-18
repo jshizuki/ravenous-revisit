@@ -1,7 +1,7 @@
 .business-card-container {
   background-color: white;
   width: 300px;
-  margin: 25px;
+  margin: 15px;
   border-radius: 10px;
   /* border: 1px solid #999999; */
   box-shadow: 1px 1px 8px 2px #E8E8E8;
@@ -31,6 +31,7 @@
 
 .business-card-container h2 {
   /* background-color: blueviolet; */
+  color: #404040;
   text-align: left;
   margin: 0;
   padding-top: 5px;

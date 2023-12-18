@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getBusinesses } from "../utils/yelpApi";
 // CSS styling
 import "../css/SearchBar.css";
 // Material UI
@@ -47,15 +46,6 @@ function SearchBar({handleSubmit}) {
     setSearchLocation(selectedLocation);
   };
 
-  // const handleSubmit = (event) => {
-  //   // Prevent refreshing page by default after submitting
-  //   event.preventDefault();
-  //   console.log(
-  //     `Searching Ravenous with ${searchOption}, ${searchGenre} and ${searchLocation}`
-  //   );
-  //   getBusinesses(searchGenre, searchLocation, searchOption);
-  // };
-
   return (
     <div className="search-container">
       <ul className="search-options">
@@ -68,13 +58,14 @@ function SearchBar({handleSubmit}) {
         })}
       </ul>
       <hr className="search-custom-hr" />
-      <form onSubmit={(event) => handleSubmit(event, searchGenre, searchLocation)}>
+      <form onSubmit={(event) => handleSubmit(event, searchGenre, searchLocation, searchOption)}>
         <TextField
           onChange={handleGenreChange}
           type="text"
-          placeholder="Type in a cuisine - example: Italian"
+          placeholder="Italian"
           value={searchGenre}
-          id="outlined-basic"
+          id="outlined-helperText"
+          label="Cuisine"
           variant="outlined"
           size="small"
           sx={{ width: 400, m: 1 }}
@@ -83,9 +74,10 @@ function SearchBar({handleSubmit}) {
         <TextField
           onChange={handleLocationChange}
           type="text"
-          placeholder="Where?"
+          placeholder="Tokyo"
           value={searchLocation}
-          id="outlined-basic"
+          id="outlined-helperText"
+          label="Location"
           variant="outlined"
           size="small"
           sx={{ width: 400, m: 1 }}

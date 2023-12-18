@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getBusinesses } from "./utils/yelpApi";
 // Import components
 import SearchBar from "./components/SearchBar";
@@ -10,9 +10,9 @@ import "./App.css";
 function App() {
   const [businesses, setBusinesses] = useState([]);
 
-  const handleSubmit = async (event, genre, location) => {
+  const handleSubmit = async (event, genre, location, option) => {
     event.preventDefault();
-    const data = await getBusinesses(genre, location);
+    const data = await getBusinesses(genre, location, option);
     // console.log(data)
     setBusinesses(data);
     // console.log(businesses);
