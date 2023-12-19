@@ -1,13 +1,13 @@
-.business-card-container {
+.businessCardContainer {
   background-color: white;
   width: 300px;
   margin: 15px;
   border-radius: 10px;
   /* border: 1px solid #999999; */
-  box-shadow: 1px 1px 8px 2px #E8E8E8;
+  box-shadow: 1px 1px 8px 2px #e8e8e8;
 }
 
-.business-card-image {
+.businessCardImage {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -15,7 +15,7 @@
   opacity: 0.8;
 }
 
-.business-card-info {
+.businessCardInfo {
   display: flex;
   /* background-color: aquamarine; */
   /* top right bottom left */
@@ -23,13 +23,12 @@
   border-radius: 0px 0px 10px 10px;
 }
 
-.business-card-info p {
+.businessCardInfo p {
   /* top right bottom left */
   margin: 5px 0px 5px 0px;
 }
 
-
-.business-card-container h2 {
+.businessCardContainer h3 {
   /* background-color: blueviolet; */
   color: #404040;
   text-align: left;
@@ -39,14 +38,14 @@
   /* margin-left: 10px; */
 }
 
-.business-card-info-left {
+.businessCardInfoLeft {
   /* background-color: blue; */
   text-align: left;
   flex-grow: 1;
   margin-left: 10px;
 }
 
-.business-card-info-right {
+.businessCardInfoRight {
   text-align: right;
   /* background-color: brown; */
   margin-right: 10px;

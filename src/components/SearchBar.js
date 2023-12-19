@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // CSS styling
-import "../css/SearchBar.css";
+import styles from "../css/SearchBar.module.css";
 // Material UI
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -11,7 +11,7 @@ const options = {
   "Most Reviewed": "review_count",
 };
 
-function SearchBar({handleSubmit}) {
+function SearchBar({ handleSubmit }) {
   // Set state variables and state
   const [searchOption, setSearchOption] = useState("best_match");
   const [searchGenre, setSearchGenre] = useState("");
@@ -25,15 +25,15 @@ function SearchBar({handleSubmit}) {
     setSearchOption(options[selectedOption]);
     // Toggle class of <li> to visually indicate which option has been selected
     const ul = target.parentNode;
-    const allLists = ul.querySelectorAll("li")
+    const allLists = ul.querySelectorAll("li");
     // Returns a nodelist
-    allLists.forEach(list => {
-      if (selectedOption === list.innerText ) {
+    allLists.forEach((list) => {
+      if (selectedOption === list.innerText) {
         list.classList.add("active");
       } else {
         list.classList.remove("active");
       }
-    })
+    });
   };
 
   const handleGenreChange = ({ target }) => {
@@ -47,8 +47,8 @@ function SearchBar({handleSubmit}) {
   };
 
   return (
-    <div className="search-container">
-      <ul className="search-options">
+    <div className={styles.searchContainer}>
+      <ul className={styles.searchOptions}>
         {Object.keys(options).map((option) => {
           return (
             <li onClick={handleOptionChange} key={options[option]}>
@@ -57,8 +57,12 @@ function SearchBar({handleSubmit}) {
           );
         })}
       </ul>
-      <hr className="search-custom-hr" />
-      <form onSubmit={(event) => handleSubmit(event, searchGenre, searchLocation, searchOption)}>
+      <hr className={styles.searchCustomHr} />
+      <form
+        onSubmit={(event) =>
+          handleSubmit(event, searchGenre, searchLocation, searchOption)
+        }
+      >
         <TextField
           onChange={handleGenreChange}
           type="text"
@@ -69,7 +73,7 @@ function SearchBar({handleSubmit}) {
           variant="outlined"
           size="small"
           sx={{ width: 400, m: 1 }}
-          className="search-custom-textfield"
+          className={styles.searchCustomTextfield}
         />
         <TextField
           onChange={handleLocationChange}
@@ -81,13 +85,13 @@ function SearchBar({handleSubmit}) {
           variant="outlined"
           size="small"
           sx={{ width: 400, m: 1 }}
-          className="search-custom-textfield"
+          className={styles.searchCustomTextfield}
         />
         <br />
         <Button
           type="submit"
           variant="contained"
-          className="search-button"
+          className={styles.searchButton}
           sx={{ width: 120, m: 1 }}
         >
           Let's go

@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getBusinesses } from "./utils/yelpApi";
 // Import components
 import SearchBar from "./components/SearchBar";
 import BusinessList from "./components/BusinessList";
 // CSS styling
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
   const [businesses, setBusinesses] = useState([]);
@@ -16,13 +16,13 @@ function App() {
     // console.log(data)
     setBusinesses(data);
     // console.log(businesses);
-  }
+  };
 
   return (
-    <div className="app-container">
-      <h1 className="app-ravenous-title">ravenous</h1>
-      <div className="app-banner-image-container">
-        <SearchBar handleSubmit={handleSubmit}/>
+    <div className={styles.container}>
+      <h1 className={styles.ravenousTitle}>ravenous</h1>
+      <div className={styles.bannerImageContainer}>
+        <SearchBar handleSubmit={handleSubmit} />
       </div>
       <BusinessList businesses={businesses} />
     </div>

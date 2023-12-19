@@ -1,15 +1,15 @@
-.search-container {
+.searchContainer {
   /* background-color: olive; */
 }
 
-.search-options {
+.searchOptions {
   list-style: none;
   display: flex;
   justify-content: center;
   padding: 0px;
 }
 
-.search-options li {
+.searchOptions li {
   /* background-color: aqua; */
   /* margin: 0px 10px 0px 10px; */
   color: #404040;
@@ -19,17 +19,17 @@
   margin-right: 10px;
 }
 
-.search-options li:hover {
+.searchOptions li:hover {
   /* margin: 0px 10px 0px 10px;
   color: #caa34e;
   text-decoration: underline; */
 }
 
-.search-options li.active {
+.searchOptions li.active {
   color: #caa34e;
 }
 
-.search-custom-hr {
+.searchCustomHr {
   width: 50%;
   opacity: 0.6;
   height: 2px;
@@ -37,10 +37,10 @@
   border: 0;
 }
 
-.search-custom-textfield {
+.searchCustomTextfield {
   background-color: white;
 }
 
-.search-button {
+.searchButton {
   background-color: #caa34e !important;
 }

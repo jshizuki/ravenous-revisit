@@ -1,10 +1,10 @@
-.app-container {
+.container {
   /* background-color: silver; */
   margin: auto;
   text-align: center;
 }
 
-.app-banner-image-container {
+.bannerImageContainer {
   background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg");
   background-size: cover;
   /* background-position: center; */
@@ -16,7 +16,7 @@
   margin-bottom: 10px;
 }
 
-.app-ravenous-title {
+.ravenousTitle {
   background-color: rgba(202, 163, 78, 0.7);
   /* background-color: #caa34e; */
   color: white;

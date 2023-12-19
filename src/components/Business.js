@@ -1,25 +1,25 @@
 import React from "react";
 // CSS styling
-import "../css/Business.css";
+import styles from "../css/Business.module.css";
 
 function Business({ business }) {
   return (
-    <div className="business-card-container">
+    <div className={styles.businessCardContainer}>
       <img
-        className="business-card-image"
+        className={styles.businessCardImage}
         src={business.image_url}
         alt={business.name}
       />
-      <h2>{business.name}</h2>
-      <div className="business-card-info">
-        <div className="business-card-info-left">
+      <h3>{business.name}</h3>
+      <div className={styles.businessCardInfo}>
+        <div className={styles.businessCardInfoLeft}>
           <p>{business["location"]["address1"]}</p>
           <p>{business["location"]["city"]}</p>
           <p>
             {business["location"]["state"]} {business["location"]["zip_code"]}
           </p>
         </div>
-        <div className="business-card-info-right">
+        <div className={styles.businessCardInfoRight}>
           <p>{business["categories"][0].title}</p>
           <p>{business.rating}</p>
           <p>{business.review_count} reviews</p>
