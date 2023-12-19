@@ -74,6 +74,7 @@ function SearchBar({ handleSubmit }) {
           size="small"
           sx={{ width: 400, m: 1 }}
           className={styles.searchCustomTextfield}
+          color="success"
         />
         <TextField
           onChange={handleLocationChange}
@@ -86,6 +87,7 @@ function SearchBar({ handleSubmit }) {
           size="small"
           sx={{ width: 400, m: 1 }}
           className={styles.searchCustomTextfield}
+          color="success"
         />
         <br />
         <Button

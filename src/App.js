@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import React, { useState } from "react";
 import { getBusinesses } from "./utils/yelpApi";
 // Import components
