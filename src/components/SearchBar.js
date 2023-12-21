@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // CSS styling
 import styles from "../css/SearchBar.module.css";
 // Material UI
@@ -22,6 +22,7 @@ function SearchBar({ handleSubmit }) {
   const handleOptionChange = ({ target }) => {
     // Capture the innertext of the <li> element
     const selectedOption = target.innerText;
+    // console.log(selectedOption);
     setSearchOption(options[selectedOption]);
     // Toggle class of <li> to visually indicate which option has been selected
     const ul = target.parentNode;
@@ -29,12 +30,20 @@ function SearchBar({ handleSubmit }) {
     // Returns a nodelist
     allLists.forEach((list) => {
       if (selectedOption === list.innerText) {
-        list.classList.add("active");
+        list.classList.add(styles["active"]);
       } else {
-        list.classList.remove("active");
+        list.classList.remove(styles["active"]);
       }
     });
   };
+
+  // Apply active class to "best match" only its first render
+  useEffect(() => {
+    const defaultOption = document.querySelector("li");
+    // handleOptionChange(defaultOption);
+    handleOptionChange({ target: defaultOption });
+    console.log({ target: defaultOption })
+  }, []);
 
   const handleGenreChange = ({ target }) => {
     const selectedGenre = target.value;
