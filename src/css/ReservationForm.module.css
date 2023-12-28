@@ -1,0 +1,26 @@
+.customModal {
+  background-color: beige;
+  text-align: center;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.customModal h2 {
+  margin: 0;
+}
+
+.reservationInfo {
+  /* background-color: greenyellow; */
+  margin: 10px;
+}
+
+.reservationTextfield {
+  background-color: white;
+}
+
+.reservationButton {
+  background-color: #caa34e !important;
+}

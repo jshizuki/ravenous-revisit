@@ -26,7 +26,7 @@ function Business({ business }) {
           <p>{business.review_count} reviews</p>
         </div>
       </div>
-      <ReservationForm />
+      <ReservationForm business={business} />
     </div>
   );
 }
