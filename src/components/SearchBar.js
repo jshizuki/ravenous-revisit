@@ -40,9 +40,7 @@ function SearchBar({ handleSubmit }) {
   // Apply active class to "best match" only its first render
   useEffect(() => {
     const defaultOption = document.querySelector("li");
-    // handleOptionChange(defaultOption);
     handleOptionChange({ target: defaultOption });
-    console.log({ target: defaultOption })
   }, []);
 
   const handleGenreChange = ({ target }) => {

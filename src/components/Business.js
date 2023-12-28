@@ -1,4 +1,5 @@
 import React from "react";
+import ReservationForm from "./ReservationForm";
 // CSS styling
 import styles from "../css/Business.module.css";
 
@@ -25,6 +26,7 @@ function Business({ business }) {
           <p>{business.review_count} reviews</p>
         </div>
       </div>
+      <ReservationForm />
     </div>
   );
 }

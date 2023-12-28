@@ -1,17 +1,17 @@
 .businessCardContainer {
   background-color: white;
-  width: 300px;
+  width: 250px;
   margin: 15px;
-  border-radius: 10px;
+  /* border-radius: 5px; */
   /* border: 1px solid #999999; */
   box-shadow: 1px 1px 8px 2px #e8e8e8;
 }
 
 .businessCardImage {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 10px 10px 0px 0px;
+  /* border-radius: 5px 5px 0px 0px; */
   opacity: 0.8;
 }
 
