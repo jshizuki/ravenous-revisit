@@ -1,7 +1,8 @@
 .customModal {
-  background-color: beige;
+  background-color: transparent;
   text-align: center;
   width: 50%;
+  /* Centers the modal */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9,12 +10,14 @@
 }
 
 .customModal h2 {
+  /* background-color: red; */
   margin: 0;
+  margin-bottom: 7px;
 }
 
 .reservationInfo {
   /* background-color: greenyellow; */
-  margin: 10px;
+  margin: 15px;
 }
 
 .reservationTextfield {

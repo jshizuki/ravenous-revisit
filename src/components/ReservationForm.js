@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-// To open a pop-up for the ReservationForm
+import React, { useState, useEffect } from "react";
+// Pop-up effect for the ReservationForm component
 import ReactModal from "react-modal";
 // CSS styling
 import styles from "../css/ReservationForm.module.css";
@@ -9,28 +9,35 @@ import Button from "@mui/material/Button";
 
 ReactModal.setAppElement("#root");
 
+const initialReservationState = {
+  name: "",
+  bookingDate: "",
+  bookingTime: "",
+  table: "",
+  phoneNumber: "",
+};
+
 function ReservationForm({ business }) {
-  const [reservation, setReservation] = useState({
-    name: "",
-    bookingDate: "",
-    bookingTime: "",
-    table: "",
-    phoneNumber: "",
-  });
+  const [reservation, setReservation] = useState(initialReservationState);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isSubmitValid, setIsSubmitValid] = useState(false);
 
+  // Tracks and stores what the user has typed
   const handleChange = (event) => {
     const { name, value } = event.target;
     setReservation((prev) => {
       return { ...prev, [name]: value };
     });
-
-    const reservationValues = Object.values(reservation);
-    const allInputsFilled = reservationValues.every(value => value !== "")
-    setIsSubmitValid(allInputsFilled);
   };
 
+  // Disables submit button until all inputs are filled
+  useEffect(() => {
+    const reservationValues = Object.values(reservation);
+    const allInputsFilled = reservationValues.every((value) => value !== "");
+    setIsSubmitValid(allInputsFilled);
+  }, [reservation]);
+
+  // Shows the reservation has been confirmed
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(`You've successfully made a reservation!
@@ -41,7 +48,7 @@ function ReservationForm({ business }) {
     Phone Number: ${reservation.phoneNumber}`);
 
     // Reset reservation details
-    setReservation({});
+    setReservation(initialReservationState);
   };
 
   const toggleModal = () => {
@@ -50,7 +57,7 @@ function ReservationForm({ business }) {
 
   return (
     <div>
-      <button onClick={toggleModal}>Make a reservation</button>
+      <Button onClick={toggleModal}>Make a reservation</Button>
 
       <ReactModal isOpen={modalIsOpen} className={styles.customModal}>
         <div className={styles.reservationInfo}>
@@ -125,6 +132,12 @@ function ReservationForm({ business }) {
               sx={{ width: 250, m: 1 }}
               color="success"
               className={styles.reservationTextfield}
+              InputProps={{
+                inputProps: {
+                  min: "1",
+                  max: "6",
+                },
+              }}
             ></TextField>
             <br />
             <label htmlFor="phoneNumber">Phone number:</label>
