@@ -1,0 +1,25 @@
+.reservations {
+  cursor: pointer;
+}
+
+.customModal {
+  background-color: lightsalmon;
+  text-align: center;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.customModal h3 {
+  background-color: white;
+  margin: 0px;
+}
+
+.reservationsContainer {
+  background-color: lavender;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

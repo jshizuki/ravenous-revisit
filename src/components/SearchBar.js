@@ -16,7 +16,6 @@ function SearchBar({ handleSubmit }) {
   const [searchOption, setSearchOption] = useState("best_match");
   const [searchGenre, setSearchGenre] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
-
   // Event handlers to capture user's selected sort option, genre and location
 
   const handleOptionChange = ({ target }) => {

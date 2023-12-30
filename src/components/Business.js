@@ -3,9 +3,11 @@ import ReservationForm from "./ReservationForm";
 // CSS styling
 import styles from "../css/Business.module.css";
 
-function Business({ business }) {
+function Business({ business, addReservation }) {
   return (
-    <div className={styles.businessCardContainer}>
+    <div
+      className={styles.businessCardContainer}
+    >
       <img
         className={styles.businessCardImage}
         src={business.image_url}
@@ -26,7 +28,7 @@ function Business({ business }) {
           <p>{business.review_count} reviews</p>
         </div>
       </div>
-      <ReservationForm business={business} />
+      <ReservationForm business={business} addReservation={addReservation}/>
     </div>
   );
 }

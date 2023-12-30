@@ -15,9 +15,10 @@ const initialReservationState = {
   bookingTime: "",
   table: "",
   phoneNumber: "",
+  business: ""
 };
 
-function ReservationForm({ business }) {
+function ReservationForm({ business, addReservation }) {
   const [reservation, setReservation] = useState(initialReservationState);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isSubmitValid, setIsSubmitValid] = useState(false);
@@ -26,7 +27,7 @@ function ReservationForm({ business }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setReservation((prev) => {
-      return { ...prev, [name]: value };
+      return { ...prev, [name]: value, business: business.name };
     });
   };
 
@@ -47,6 +48,8 @@ function ReservationForm({ business }) {
     Table: ${reservation.table}
     Phone Number: ${reservation.phoneNumber}`);
 
+    addReservation(reservation);
+
     // Reset reservation details
     setReservation(initialReservationState);
   };
@@ -58,7 +61,6 @@ function ReservationForm({ business }) {
   return (
     <div>
       <Button onClick={toggleModal}>Make a reservation</Button>
-
       <ReactModal isOpen={modalIsOpen} className={styles.customModal}>
         <div className={styles.reservationInfo}>
           <h2>{business.name}</h2>

@@ -3,11 +3,17 @@ import { getBusinesses } from "./utils/yelpApi";
 // Import components
 import SearchBar from "./components/SearchBar";
 import BusinessList from "./components/BusinessList";
+import ReservationList from "./components/ReservationList";
 // CSS styling
 import styles from "./App.module.css";
 
 function App() {
   const [businesses, setBusinesses] = useState([]);
+  const [reservations, setReservations] = useState([]);
+
+  const addReservation = (newReservation) => {
+    setReservations((prev) => [newReservation, ...prev]);
+  };
 
   const handleSubmit = async (event, genre, location, option) => {
     event.preventDefault();
@@ -23,7 +29,8 @@ function App() {
       <div className={styles.bannerImageContainer}>
         <SearchBar handleSubmit={handleSubmit} />
       </div>
-      <BusinessList businesses={businesses} />
+      <ReservationList reservations={reservations}/>
+      <BusinessList businesses={businesses} addReservation={addReservation} />
     </div>
   );
 }
