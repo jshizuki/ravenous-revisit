@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 
 ReactModal.setAppElement("#root");
 
-function ReservationList({ reservations }) {
+function ReservationList({ reservations, updateReservation }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
@@ -24,8 +24,14 @@ function ReservationList({ reservations }) {
       <ReactModal isOpen={modalIsOpen} className={styles.customModal}>
         <h3>Reservations</h3>
         <div className={styles.reservationsContainer}>
-          {reservations.map((reservation) => {
-            return <Reservation reservation={reservation} />;
+          {reservations.map((reservation, id) => {
+            return (
+              <Reservation
+                key={reservation.name + id}
+                reservation={reservation}
+                updateReservation={updateReservation}
+              />
+            );
           })}
         </div>
         <Button onClick={toggleModal}>Close</Button>

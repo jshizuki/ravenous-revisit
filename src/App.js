@@ -11,10 +11,6 @@ function App() {
   const [businesses, setBusinesses] = useState([]);
   const [reservations, setReservations] = useState([]);
 
-  const addReservation = (newReservation) => {
-    setReservations((prev) => [newReservation, ...prev]);
-  };
-
   const handleSubmit = async (event, genre, location, option) => {
     event.preventDefault();
     const data = await getBusinesses(genre, location, option);
@@ -23,13 +19,46 @@ function App() {
     // console.log(businesses);
   };
 
+  // Add a new reservation to the reservations array
+  const addReservation = (newReservation) => {
+    setReservations((prev) => [newReservation, ...prev]);
+  };
+
+  // const updateReservation = (updatedReservation) => {
+  //   setReservations((prev) => {
+  //     const index = prev.findIndex(
+  //       (reservation) => reservation.id === updatedReservation.id
+  //     );
+  //     const newReservations = [...prev];
+  //     newReservations[index] = updatedReservation;
+  //     return newReservations;
+  //   });
+  // };
+
+  const updateReservation = (updatedReservation) => {
+    setReservations((prev) => {
+      const index = prev.findIndex(
+        (reservation) => reservation.id === updatedReservation.id
+      );
+      if (index !== -1) {
+        const newReservations = [...prev];
+        newReservations[index] = updatedReservation;
+        return newReservations;
+      }
+      return prev;
+    });
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.ravenousTitle}>ravenous</h1>
       <div className={styles.bannerImageContainer}>
         <SearchBar handleSubmit={handleSubmit} />
       </div>
-      <ReservationList reservations={reservations}/>
+      <ReservationList
+        reservations={reservations}
+        updateReservation={updateReservation}
+      />
       <BusinessList businesses={businesses} addReservation={addReservation} />
     </div>
   );

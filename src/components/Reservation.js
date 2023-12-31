@@ -1,22 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import ReservationForm from "./ReservationForm";
 // CSS styling
 import styles from "../css/Reservation.module.css";
 // Material UI
 import Button from "@mui/material/Button";
 
-function Reservation({reservation}) {
-  const updateReservation = () => {
+function Reservation({ reservation, updateReservation }) {
+  const [isEditing, setIsEditing] = useState(false);
 
+  const handleUpdate = () => {
+    setIsEditing(true);
+  };
+
+  const handleFormUpdate = () => {
+    setIsEditing(false);
   }
+
+  const reservationDetails = (
+    <div>
+      <b>Restaurant:</b> {reservation.business}<br />
+      <b>Name:</b> {reservation.name}<br />
+      <b>Booking Date:</b> {reservation.bookingDate}<br />
+      <b>Booking time:</b> {reservation.bookingTime}<br />
+      <b>Number of people:</b> {reservation.table}<br />
+      <b>Phone Number:</b> {reservation.phoneNumber}<br />
+      <Button onClick={handleUpdate}>Update</Button>
+    </div>
+  );
+
   return (
     <div className={styles.reservationContainer}>
-      <p><b>Restaurant:</b> {reservation.business}</p>
-      <p><b>Name:</b> {reservation.name}</p>
-      <p><b>Booking Date:</b> {reservation.bookingDate}</p>
-      <p><b>Booking time:</b> {reservation.bookingTime}</p>
-      <p><b>Number of people:</b> {reservation.table}</p>
-      <p><b>Phone Number:</b> {reservation.phoneNumber}</p>
-      <Button onClick={updateReservation}>Update</Button>
+      {isEditing ? (
+        <>
+          <ReservationForm
+            business={reservation.business}
+            reservationToUpdate={reservation}
+            updateReservation={updateReservation}
+            handleFormUpdate={handleFormUpdate}
+          />
+        </>
+      ) : (
+        reservationDetails
+      )}
     </div>
   );
 }
