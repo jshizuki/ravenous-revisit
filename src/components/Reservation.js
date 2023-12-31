@@ -5,7 +5,7 @@ import styles from "../css/Reservation.module.css";
 // Material UI
 import Button from "@mui/material/Button";
 
-function Reservation({ reservation, updateReservation }) {
+function Reservation({ reservation, updateReservation, deleteReservation }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleUpdate = () => {
@@ -14,6 +14,11 @@ function Reservation({ reservation, updateReservation }) {
 
   const handleFormUpdate = () => {
     setIsEditing(false);
+  }
+
+  const handleDelete = () => {
+    alert("Are you sure?  This cannot be undone.")
+    deleteReservation(reservation.id);
   }
 
   const reservationDetails = (
@@ -25,6 +30,7 @@ function Reservation({ reservation, updateReservation }) {
       <b>Number of people:</b> {reservation.table}<br />
       <b>Phone Number:</b> {reservation.phoneNumber}<br />
       <Button onClick={handleUpdate}>Update</Button>
+      <Button onClick={handleDelete}>Delete</Button>
     </div>
   );
 

@@ -7,6 +7,13 @@ import ReservationList from "./components/ReservationList";
 // CSS styling
 import styles from "./App.module.css";
 
+let nextId = 0;
+function generateId() {
+  const result = nextId;
+  nextId += 1;
+  return result;
+}
+
 function App() {
   const [businesses, setBusinesses] = useState([]);
   const [reservations, setReservations] = useState([]);
@@ -21,31 +28,32 @@ function App() {
 
   // Add a new reservation to the reservations array
   const addReservation = (newReservation) => {
-    setReservations((prev) => [newReservation, ...prev]);
+    const reservationWithId = { ...newReservation, id: generateId() }; // Add the ID to the new reservation
+    // console.log(reservationWithId);
+    setReservations((prev) => [reservationWithId, ...prev]);
   };
-
-  // const updateReservation = (updatedReservation) => {
-  //   setReservations((prev) => {
-  //     const index = prev.findIndex(
-  //       (reservation) => reservation.id === updatedReservation.id
-  //     );
-  //     const newReservations = [...prev];
-  //     newReservations[index] = updatedReservation;
-  //     return newReservations;
-  //   });
-  // };
 
   const updateReservation = (updatedReservation) => {
     setReservations((prev) => {
       const index = prev.findIndex(
         (reservation) => reservation.id === updatedReservation.id
       );
+      console.log(index)
       if (index !== -1) {
         const newReservations = [...prev];
         newReservations[index] = updatedReservation;
         return newReservations;
       }
       return prev;
+    });
+  };
+
+  const deleteReservation = (reservationId) => {
+    setReservations((prev) => {
+      const updatedReservations = prev.filter(
+        (reservation) => reservation.id !== reservationId
+      );
+      return updatedReservations;
     });
   };
 
@@ -58,6 +66,7 @@ function App() {
       <ReservationList
         reservations={reservations}
         updateReservation={updateReservation}
+        deleteReservation={deleteReservation}
       />
       <BusinessList businesses={businesses} addReservation={addReservation} />
     </div>

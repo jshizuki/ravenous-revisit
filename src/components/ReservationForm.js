@@ -23,7 +23,7 @@ function ReservationForm({
   addReservation,
   reservationToUpdate,
   updateReservation,
-  handleFormUpdate
+  handleFormUpdate,
 }) {
   const [reservation, setReservation] = useState(initialReservationState);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -80,7 +80,7 @@ function ReservationForm({
   const form = (
     <div className={styles.reservationInfo}>
       <h2>{reservationToUpdate ? business : business.name}</h2>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <br />
         <TextField
