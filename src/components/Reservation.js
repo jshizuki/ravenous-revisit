@@ -5,15 +5,15 @@ import styles from "../css/Reservation.module.css";
 // Material UI
 import Button from "@mui/material/Button";
 
+/* This component is for rendering:
+- reservation details; or
+- updating or deleting a reservation */
+
 function Reservation({ reservation, updateReservation, deleteReservation }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleUpdate = () => {
-    setIsEditing(true);
-  };
-
-  const handleFormUpdate = () => {
-    setIsEditing(false);
+  const handleReservationUpdate = () => {
+    isEditing ? setIsEditing(false) : setIsEditing(true);
   }
 
   const handleDelete = () => {
@@ -29,7 +29,7 @@ function Reservation({ reservation, updateReservation, deleteReservation }) {
       <b>Booking time:</b> {reservation.bookingTime}<br />
       <b>Number of people:</b> {reservation.table}<br />
       <b>Phone Number:</b> {reservation.phoneNumber}<br />
-      <Button onClick={handleUpdate}>Update</Button>
+      <Button onClick={handleReservationUpdate}>Update</Button>
       <Button onClick={handleDelete}>Delete</Button>
     </div>
   );
@@ -39,10 +39,9 @@ function Reservation({ reservation, updateReservation, deleteReservation }) {
       {isEditing ? (
         <>
           <ReservationForm
-            business={reservation.business}
             reservationToUpdate={reservation}
             updateReservation={updateReservation}
-            handleFormUpdate={handleFormUpdate}
+            handleReservationUpdate={handleReservationUpdate}
           />
         </>
       ) : (

@@ -1,0 +1,18 @@
+.reservationInfo {
+  /* background-color: greenyellow; */
+  margin: 15px;
+}
+
+.reservationInfo h2 {
+  /* background-color: red; */
+  margin: 0;
+  margin-bottom: 7px;
+}
+
+.reservationTextfield {
+  background-color: white;
+}
+
+.reservationButton {
+  background-color: #caa34e !important;
+}
