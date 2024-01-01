@@ -14,19 +14,18 @@ function App() {
 
   const handleSubmit = async (event, genre, location, option) => {
     event.preventDefault();
-    const data = await getBusinesses(genre, location, option);
-    // console.log(data)
-    setBusinesses(data);
-    // console.log(businesses);
+    // API call
+    const businessData = await getBusinesses(genre, location, option);
+    setBusinesses(businessData);
   };
 
   // Add a new reservation to the reservations array
   const addReservation = (newReservation) => {
-    const reservationWithId = { ...newReservation, id: generateId() }; // Add the ID to the new reservation
-    // console.log(reservationWithId);
+    const reservationWithId = { ...newReservation, id: generateId() };
     setReservations((prev) => [reservationWithId, ...prev]);
   };
 
+  // Replace the existing reservation with the updated reservation
   const updateReservation = (updatedReservation) => {
     setReservations((prev) => {
       const index = prev.findIndex(
