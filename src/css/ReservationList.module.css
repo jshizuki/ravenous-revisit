@@ -1,9 +1,6 @@
-.reservations {
-  cursor: pointer;
-}
-
 .customModal {
-  background-color: lightsalmon;
+  /* background-color: whitesmoke;
+  border-radius: 10px; */
   text-align: center;
   width: 50%;
   position: absolute;
@@ -13,12 +10,13 @@
 }
 
 .customModal h3 {
-  background-color: white;
+  /* background-color: red; */
   margin: 0px;
+  padding: 10px;
 }
 
 .reservationsContainer {
-  background-color: lavender;
+  /* background-color: lavender; */
   display: flex;
   justify-content: center;
   align-items: center;

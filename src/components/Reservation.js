@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ReservationForm from "./ReservationForm";
 // CSS styling
-import styles from "../css/Reservation.module.css";
+// import styles from "../css/Reservation.module.css";
 // Material UI
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 
 /* This component is for rendering:
 - reservation details; or
@@ -14,28 +15,44 @@ function Reservation({ reservation, updateReservation, deleteReservation }) {
 
   const handleReservationUpdate = () => {
     isEditing ? setIsEditing(false) : setIsEditing(true);
-  }
+  };
 
   const handleDelete = () => {
-    alert("Are you sure?  This cannot be undone.")
+    alert("Are you sure?  This cannot be undone.");
     deleteReservation(reservation.id);
-  }
+  };
 
   const reservationDetails = (
     <div>
-      <b>Restaurant:</b> {reservation.business}<br />
-      <b>Name:</b> {reservation.name}<br />
-      <b>Booking Date:</b> {reservation.bookingDate}<br />
-      <b>Booking time:</b> {reservation.bookingTime}<br />
-      <b>Number of people:</b> {reservation.table}<br />
-      <b>Phone Number:</b> {reservation.phoneNumber}<br />
-      <Button onClick={handleReservationUpdate}>Update</Button>
-      <Button onClick={handleDelete}>Delete</Button>
+      <p>
+        <b>Restaurant:</b> {reservation.business}
+      </p>
+      <p>
+        <b>Name:</b> {reservation.name}
+      </p>
+      <p>
+        <b>Booking Date:</b> {reservation.bookingDate}
+      </p>
+      <p>
+        <b>Booking time:</b> {reservation.bookingTime}
+      </p>
+      <p>
+        <b>Number of people:</b> {reservation.table}
+      </p>
+      <p>
+        <b>Phone Number:</b> {reservation.phoneNumber}
+      </p>
+      <Button onClick={handleReservationUpdate} sx={{ p: 0 }}>
+        Update
+      </Button>
+      <Button onClick={handleDelete} sx={{ p: 0 }}>
+        Delete
+      </Button>
     </div>
   );
 
   return (
-    <div className={styles.reservationContainer}>
+    <Card sx={{ m: 1, minWidth: 350, minHeight: 250 }}>
       {isEditing ? (
         <>
           <ReservationForm
@@ -47,7 +64,7 @@ function Reservation({ reservation, updateReservation, deleteReservation }) {
       ) : (
         reservationDetails
       )}
-    </div>
+    </Card>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { getBusinesses } from "./utils/yelpApi";
 import { generateId } from "./utils/helpers";
 // Import components
+import ButtonAppBar from "./components/ButtonAppBar";
 import SearchBar from "./components/SearchBar";
 import BusinessList from "./components/BusinessList";
 import ReservationList from "./components/ReservationList";
@@ -11,6 +12,7 @@ import styles from "./App.module.css";
 function App() {
   const [businesses, setBusinesses] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = async (event, genre, location, option) => {
     event.preventDefault();
@@ -49,9 +51,13 @@ function App() {
     });
   };
 
+  const toggleModal = () => {
+    modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true);
+  };
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.ravenousTitle}>ravenous</h1>
+      <ButtonAppBar className={styles.ravenousTitle} toggleModal={toggleModal} />
       <div className={styles.bannerImageContainer}>
         <SearchBar handleSubmit={handleSubmit} />
       </div>
@@ -59,6 +65,8 @@ function App() {
         reservations={reservations}
         updateReservation={updateReservation}
         deleteReservation={deleteReservation}
+        toggleModal={toggleModal}
+        modalIsOpen={modalIsOpen}
       />
       <BusinessList businesses={businesses} addReservation={addReservation} />
     </div>

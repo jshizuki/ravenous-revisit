@@ -37,7 +37,11 @@ function ReservationForm({
 
     if (reservationToUpdate) {
       setReservation((prev) => {
-        return { ...prev, [name]: value, business: reservationToUpdate.business };
+        return {
+          ...prev,
+          [name]: value,
+          business: reservationToUpdate.business,
+        };
       });
     } else {
       setReservation((prev) => {
@@ -90,7 +94,13 @@ function ReservationForm({
   } else {
     return (
       <>
-        <Button onClick={toggleModal}>Make a reservation</Button>
+        <Button
+          variant="outlined"
+          onClick={toggleModal}
+          sx={{ m: 2 }}
+        >
+          Make a reservation
+        </Button>
         <ReactModal isOpen={modalIsOpen} className={styles.customModal}>
           {reservationFormContent}
           <Button
