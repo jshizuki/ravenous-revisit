@@ -1,11 +1,17 @@
 .businessCardContainer {
-  background-color: white;
+  /* background-color: yellow; */
   width: 250px;
   margin: 15px;
   /* border-radius: 5px; */
   /* border: 1px solid #999999; */
   box-shadow: 1px 1px 8px 2px #e8e8e8;
 }
+
+.businessCardContainer h3 {
+  /* background-color: red; */
+  padding: 0px 0px 5px 0px;
+}
+
 
 .businessCardImage {
   width: 100%;
@@ -19,8 +25,8 @@
   display: flex;
   /* background-color: aquamarine; */
   /* top right bottom left */
-  padding: 5px 0px 5px 0px;
-  border-radius: 0px 0px 10px 10px;
+  padding: 0px 0px 5px 0px;
+  /* border-radius: 0px 0px 10px 10px; */
 }
 
 .businessCardInfo p {
@@ -49,4 +55,9 @@
   text-align: right;
   /* background-color: brown; */
   margin-right: 10px;
+}
+
+#businessCategory {
+  font-weight: bold;
+  color: #9a8d88;
 }

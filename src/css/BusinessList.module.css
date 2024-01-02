@@ -1,5 +1,6 @@
 .allBusinessCardContainer {
   /* background-color: black; */
+  width: 80%;
   margin: auto;
   display: flex;
   justify-content: center;

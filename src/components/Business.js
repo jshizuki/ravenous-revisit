@@ -2,12 +2,12 @@ import React from "react";
 import ReservationForm from "./ReservationForm";
 // CSS styling
 import styles from "../css/Business.module.css";
+// Material
+import Rating from "@mui/material/Rating";
 
 function Business({ business, addReservation }) {
   return (
-    <div
-      className={styles.businessCardContainer}
-    >
+    <div className={styles.businessCardContainer}>
       <img
         className={styles.businessCardImage}
         src={business.image_url}
@@ -23,8 +23,14 @@ function Business({ business, addReservation }) {
           </p>
         </div>
         <div className={styles.businessCardInfoRight}>
-          <p>{business["categories"][0].title}</p>
-          <p>{business.rating}</p>
+          <p id={styles.businessCategory}>{(business["categories"][0].title).toUpperCase()}</p>
+          <Rating
+            name="read-only"
+            value={business.rating}
+            precision={0.5}
+            size="small"
+            readOnly
+          />
           <p>{business.review_count} reviews</p>
         </div>
       </div>
