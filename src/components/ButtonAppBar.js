@@ -14,26 +14,22 @@ import ReactModal from "react-modal";
 
 export default function ButtonAppBar({ toggleModal }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
+  // Controls states of username and password
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // Controls login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Controls form status
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  // Controls display of wrong username/password
   const [loginError, setLoginError] = useState(false);
 
-  const toggleLoginForm = () => {
-    if (showLoginForm) {
-      setShowLoginForm(false);
-    } else {
-      setShowLoginForm(true);
-    };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const handleLoginSubmit = (event) => {
@@ -46,12 +42,27 @@ export default function ButtonAppBar({ toggleModal }) {
     }
   };
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleLogout = () => {
+    const confirmed = window.confirm("Are you sure you want to log out?");
+    if (confirmed) {
+      setIsLoggedIn(false);
+    }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const toggleLoginForm = () => {
+    if (showLoginForm) {
+      setShowLoginForm(false);
+    } else {
+      setShowLoginForm(true);
+    }
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
   return (
@@ -73,9 +84,15 @@ export default function ButtonAppBar({ toggleModal }) {
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <b>ravenous</b>
           </Typography>
-          <Button color="inherit" onClick={toggleLoginForm}>
-            {isLoggedIn ? "logout" : "login"}
-          </Button>
+          {isLoggedIn ? (
+            <Button color="inherit" onClick={handleLogout}>
+              logout
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={toggleLoginForm}>
+              login
+            </Button>
+          )}
           {!isLoggedIn && (
             <ReactModal
               isOpen={showLoginForm}
