@@ -16,10 +16,11 @@ import ReactModal from "react-modal";
 export default function ButtonAppBar({ toggleModal }) {
   const [anchorEl, setAnchorEl] = useState(null);
   // Controls states of username and password
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
   // Controls signup and login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignedUp, setIsSignedUp] = useState(false);
   // Controls form status
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
@@ -37,6 +38,7 @@ export default function ButtonAppBar({ toggleModal }) {
   const handleSignupSubmit = (event) => {
     event.preventDefault();
     alert("Signed up successfully!");
+    setIsSignedUp(true);
     toggleSignupForm();
   };
 
@@ -50,6 +52,7 @@ export default function ButtonAppBar({ toggleModal }) {
     if (enteredUsername === username && enteredPassword === password) {
       setIsLoggedIn(true);
       setShowLoginForm(false);
+      alert("Logged in successfully!")
     } else {
       setLoginError(true);
     }
@@ -111,28 +114,33 @@ export default function ButtonAppBar({ toggleModal }) {
                 login
               </Button>
             )}
-            <Button color="inherit" onClick={toggleSignupForm}>
-              SIGN UP
-            </Button>
+            {!isSignedUp && (
+              <Button color="inherit" onClick={toggleSignupForm}>
+                SIGN UP
+              </Button>
+            )}
           </div>
 
           <ReactModal isOpen={showSignupForm} className={styles.customModal}>
             <form onSubmit={handleSignupSubmit}>
               <TextField
                 required
-                placeholder="username"
+                placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
                 size="small"
                 sx={{ width: 250, m: 1 }}
-              /><br />
+              />
+              <br />
               <TextField
                 required
-                placeholder="password"
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 size="small"
                 sx={{ width: 250, m: 1 }}
-              /><br />
+              />
+              <br />
               <Button type="submit">Create</Button>
+              <Button type="submit" onClick={toggleSignupForm}>Close</Button>
             </form>
           </ReactModal>
           {!isLoggedIn && (
@@ -159,6 +167,7 @@ export default function ButtonAppBar({ toggleModal }) {
                 {loginError && <p>Incorrect username or password</p>}
                 <br />
                 <Button type="submit">Login</Button>
+                <Button type="submit" onClick={toggleLoginForm}>Close</Button>
               </form>
             </ReactModal>
           )}
