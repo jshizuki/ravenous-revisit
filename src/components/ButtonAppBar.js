@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "../css/ButtonAppBar.module.css";
+import TextField from "@mui/material/TextField";
 //
 import ReactModal from "react-modal";
 
@@ -17,10 +18,11 @@ export default function ButtonAppBar({ toggleModal }) {
   // Controls states of username and password
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // Controls login status
+  // Controls signup and login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Controls form status
   const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
   // Controls display of wrong username/password
   const [loginError, setLoginError] = useState(false);
 
@@ -32,9 +34,20 @@ export default function ButtonAppBar({ toggleModal }) {
     setAnchorEl(null);
   };
 
+  const handleSignupSubmit = (event) => {
+    event.preventDefault();
+    alert("Signed up successfully!");
+    toggleSignupForm();
+  };
+
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    if (username === "secret" && password === "secret") {
+    const enteredUsername =
+      event.target.querySelector("input[type=text]").value;
+    const enteredPassword = event.target.querySelector(
+      "input[type=password]"
+    ).value;
+    if (enteredUsername === username && enteredPassword === password) {
       setIsLoggedIn(true);
       setShowLoginForm(false);
     } else {
@@ -57,63 +70,95 @@ export default function ButtonAppBar({ toggleModal }) {
     }
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const toggleSignupForm = () => {
+    if (showSignupForm) {
+      setShowSignupForm(false);
+    } else {
+      setShowSignupForm(true);
+    }
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className={styles.customAppBar}>
         <Toolbar>
-          {isLoggedIn && (
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <div className={styles.toolbarLeft}>
+            {isLoggedIn && (
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={handleClick}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+          </div>
+
+          <Typography variant="h4" component="div">
             <b>ravenous</b>
           </Typography>
-          {isLoggedIn ? (
-            <Button color="inherit" onClick={handleLogout}>
-              logout
+
+          <div className={styles.toolbarRight}>
+            {isLoggedIn ? (
+              <Button color="inherit" onClick={handleLogout}>
+                logout
+              </Button>
+            ) : (
+              <Button color="inherit" onClick={toggleLoginForm}>
+                login
+              </Button>
+            )}
+            <Button color="inherit" onClick={toggleSignupForm}>
+              SIGN UP
             </Button>
-          ) : (
-            <Button color="inherit" onClick={toggleLoginForm}>
-              login
-            </Button>
-          )}
+          </div>
+
+          <ReactModal isOpen={showSignupForm} className={styles.customModal}>
+            <form onSubmit={handleSignupSubmit}>
+              <TextField
+                required
+                placeholder="username"
+                onChange={(e) => setUsername(e.target.value)}
+                size="small"
+                sx={{ width: 250, m: 1 }}
+              /><br />
+              <TextField
+                required
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+                size="small"
+                sx={{ width: 250, m: 1 }}
+              /><br />
+              <Button type="submit">Create</Button>
+            </form>
+          </ReactModal>
           {!isLoggedIn && (
             <ReactModal
               isOpen={showLoginForm}
               onRequestClose={toggleLoginForm}
               contentLabel="Login Form"
+              className={styles.customModal}
             >
               <form onSubmit={handleLoginSubmit}>
-                <input
+                <TextField
                   type="text"
                   placeholder="Username"
-                  value={username}
-                  onChange={handleUsernameChange}
+                  size="small"
+                  sx={{ width: 250, m: 1 }}
                 />
-                <input
+                <br />
+                <TextField
                   type="password"
                   placeholder="Password"
-                  value={password}
-                  onChange={handlePasswordChange}
+                  size="small"
+                  sx={{ width: 250, m: 1 }}
                 />
                 {loginError && <p>Incorrect username or password</p>}
-                <button type="submit">Login</button>
+                <br />
+                <Button type="submit">Login</Button>
               </form>
             </ReactModal>
           )}
