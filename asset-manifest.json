@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ravenous-revisit/static/css/main.36cdcd1c.css",
+    "main.js": "/ravenous-revisit/static/js/main.ecc9fa67.js",
+    "static/js/787.9b0e5794.chunk.js": "/ravenous-revisit/static/js/787.9b0e5794.chunk.js",
+    "index.html": "/ravenous-revisit/index.html",
+    "main.36cdcd1c.css.map": "/ravenous-revisit/static/css/main.36cdcd1c.css.map",
+    "main.ecc9fa67.js.map": "/ravenous-revisit/static/js/main.ecc9fa67.js.map",
+    "787.9b0e5794.chunk.js.map": "/ravenous-revisit/static/js/787.9b0e5794.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36cdcd1c.css",
+    "static/js/main.ecc9fa67.js"
+  ]
+}
